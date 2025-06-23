@@ -58,8 +58,7 @@ jobs:
         run: az extension update -n ml
       - name: create-compute-default-tier
         if: ${{ inputs.cluster_tier == ''}}
-        run: |
-          az ml compute create --name ${{ inputs.cluster_name }} \
+        run: az ml compute create --name ${{ inputs.cluster_name }} \
                                   --type AmlCompute \
                                   --tier "dedicated" \
                                   --size ${{ inputs.size }} \
@@ -69,8 +68,7 @@ jobs:
                                   --workspace-name ${{ inputs.workspace_name }}
       - name: create-compute-using-tier
         if: ${{ inputs.cluster_tier != ''}}
-        run: |
-          az ml compute create --name ${{ inputs.cluster_name }} \
+        run: az ml compute create --name ${{ inputs.cluster_name }} \
                                   --type AmlCompute \
                                   --tier ${{ inputs.cluster_tier }} \
                                   --size ${{ inputs.size }} \
